@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- DESARROLLO -->
+    <!--<string name="url_login" translatable="false">http://kikevila.noip.me:8080/foundapet/login.php</string>
+    <string name="url_register" translatable="false">http://kikevila.noip.me:8080/foundapet/register.php</string>
+    <string name="url_get_pets_by_state" translatable="false">http://kikevila.noip.me:8080/foundapet/getPetsByState.php</string>
+    <string name="url_new_pet" translatable="false">http://kikevila.noip.me:8080/foundapet/newPet.php</string>
+    <string name="url_get_users_positions" translatable="false">http://kikevila.noip.me:8080/foundapet/getUsersPositions.php</string>
+    <string name="url_send_user_position" translatable="false">http://kikevila.noip.me:8080/foundapet/saveUserPosition.php</string>
+    <string name="url_update_patrol_mode_state" translatable="false">http://kikevila.noip.me:8080/foundapet/updatePatrolModeState.php</string>
+    <string name="url_get_pet_image" translatable="false">http://kikevila.noip.me:8080/foundapet/getPetImage.php</string>
+    <string name="url_mark_pet_as_rescued" translatable="false">http://kikevila.noip.me:8080/foundapet/markPetAsRescued.php</string>
+    <string name="url_comment" translatable="false">http://kikevila.noip.me:8080/foundapet/newComment.php</string>
+    <string name="url_get_comments" translatable="false">http://kikevila.noip.me:8080/foundapet/getComments.php</string>
+    <string name="url_delete_user" translatable="false">http://kikevila.noip.me:8080/foundapet/deleteUser.php</string>-->
+
+    <!-- DESARROLLO 2-->
+    <!--<string name="url_login" translatable="false">http://kikevila.noip.me:8081/foundapet/login.php</string>
+    <string name="url_register" translatable="false">http://kikevila.noip.me:8081/foundapet/register.php</string>
+    <string name="url_get_pets_by_state" translatable="false">http://kikevila.noip.me:8081/foundapet/getPetsByState.php</string>
+    <string name="url_new_pet" translatable="false">http://kikevila.noip.me:8081/foundapet/newPet.php</string>
+    <string name="url_get_users_positions" translatable="false">http://kikevila.noip.me:8081/foundapet/getUsersPositions.php</string>
+    <string name="url_send_user_position" translatable="false">http://kikevila.noip.me:8081/foundapet/saveUserPosition.php</string>
+    <string name="url_update_patrol_mode_state" translatable="false">http://kikevila.noip.me:8081/foundapet/updatePatrolModeState.php</string>
+    <string name="url_get_pet_image" translatable="false">http://kikevila.noip.me:8081/foundapet/getPetImage.php</string>
+    <string name="url_mark_pet_as_rescued" translatable="false">http://kikevila.noip.me:8081/foundapet/markPetAsRescued.php</string>
+    <string name="url_comment" translatable="false">http://kikevila.noip.me:8081/foundapet/newComment.php</string>
+    <string name="url_get_comments" translatable="false">http://kikevila.noip.me:8081/foundapet/getComments.php</string>
+    <string name="url_delete_user" translatable="false">http://kikevila.noip.me:8081/foundapet/deleteUser.php</string>-->
+
+    <!-- PRODUCCION -->
+    <string name="url_login" translatable="false">http://quiquevila.es/foundapet/login.php</string>
+    <string name="url_register" translatable="false">http://quiquevila.es/foundapet/register.php</string>
+    <string name="url_get_pets_by_state" translatable="false">http://quiquevila.es/foundapet/getPetsByState.php</string>
+    <string name="url_new_pet" translatable="false">http://quiquevila.es/foundapet/newPet.php</string>
+    <string name="url_get_users_positions" translatable="false">http://quiquevila.es/foundapet/getUsersPositions.php</string>
+    <string name="url_send_user_position" translatable="false">http://quiquevila.es/foundapet/saveUserPosition.php</string>
+    <string name="url_update_patrol_mode_state" translatable="false">http://quiquevila.es/foundapet/updatePatrolModeState.php</string>
+    <string name="url_get_pet_image" translatable="false">http://quiquevila.es/foundapet/getPetImage.php</string>
+    <string name="url_mark_pet_as_rescued" translatable="false">http://quiquevila.es/foundapet/markPetAsRescued.php</string>
+    <string name="url_comment" translatable="false">http://quiquevila.es/foundapet/newComment.php</string>
+    <string name="url_get_comments" translatable="false">http://quiquevila.es/foundapet/getComments.php</string>
+    <string name="url_delete_user" translatable="false">http://quiquevila.es/foundapet/deleteUser.php</string>
+
+</resources>

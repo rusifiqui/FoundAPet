@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayoutPetDesc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.jvilam.foundapet.views.PetDescriptionActivity"
+    android:background="@color/background">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/type"
+        android:id="@+id/textView11"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textViewType"
+        android:layout_below="@+id/textView11"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/race"
+        android:id="@+id/textView13"
+        android:layout_below="@+id/textViewType"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textViewRace"
+        android:layout_below="@+id/textView13"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/pet_desc"
+        android:id="@+id/textView15"
+        android:layout_below="@+id/textViewRace"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textViewDescription"
+        android:layout_below="@+id/textView15"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageViewPet"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textViewLoadingImage"
+        android:layout_above="@+id/imageButtonShare" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/image_loading"
+        android:id="@+id/textViewLoadingImage"
+        android:layout_below="@+id/textViewDescription"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/textColor"/>
+
+    <ImageButton
+        style="?android:attr/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonShare"
+        android:src="@android:drawable/ic_menu_share"
+        android:background="@color/background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        style="?android:attr/buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonPetRescued"
+        android:background="@color/background"
+        android:src="@drawable/ic_thumb_up_white_48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButtonComments"
+        android:src="@drawable/ic_chat_white_48dp"
+        android:background="@color/background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageViewPet"
+        android:layout_alignEnd="@+id/imageViewPet" />
+</RelativeLayout>
