@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pet_types">
+        <item>Selecciona una especie animal</item>
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="pet_types_no_hint">
+        <item>Perro</item>
+        <item>Gato</item>
+        <item>Otro</item>
+    </string-array>
+
+    <string-array name="map_types">
+        <item>Vista de mapa</item>
+        <item>Vista de satélite</item>
+        <item>Vista de terreno</item>
+    </string-array>
+</resources>

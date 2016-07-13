@@ -48,6 +48,10 @@
     <string name="patrol_mode_check">Modo Patrulla</string>
     <string name="locating">Localizando</string>
     <string name="locating_text">Se está obteniendo tu localización</string>
+    <string name="feedback">Informar de un error</string>
+    <string name="email_address" translatable="false">foundapetapp@gmail.com</string>
+    <string name="email_subject">Informe de la aplicación</string>
+
 
     <!-- Pantalla de Mapa -->
     <string name="more_info">Más información…</string>
@@ -96,6 +100,6 @@
     <string name="comment_required">Debe introducir un comentario</string>
     <string name="insert_comment">Comentario…</string>
     <string name="no_comments_title">Aun no se han introducido comentarios</string>
-    <string name="no_comments">Se el primero en comentar este caso, pero siempre que lo que escribas pueda ayudar al animalito :)</string>
+    <string name="no_comments">Sé el primero en comentar este caso, pero siempre que lo que escribas pueda ayudar al animalito :)</string>
 
 </resources>

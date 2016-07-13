@@ -55,4 +55,15 @@
         android:src="@drawable/ic_setting_dark"
         android:background="@color/background" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/feedback"
+        android:textColor="@color/textColor"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textViewFeedback"
+        android:layout_marginBottom="37dp"
+        android:layout_above="@+id/imageButtonSettings"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -15,10 +15,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -61,6 +64,14 @@ public class MainActivity extends BaseVolleyActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Comprobamos que la aplicación tenga permisos para utilizar la ubicación y, en caso de no tenerlo, se solicita.
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED &&
+                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},1);
+        }
         setContentView(R.layout.activity_main);
 
         // PUBLICIDAD
@@ -73,6 +84,7 @@ public class MainActivity extends BaseVolleyActivity {
         ImageButton settingsButton = (ImageButton) findViewById(R.id.imageButtonSettings);
         ImageButton newPet = (ImageButton) findViewById(R.id.buttonNewPet);
         patrolModeCheck = (CheckBox) findViewById(R.id.checkBoxPatrolMode);
+        TextView feedback = (TextView) findViewById(R.id.textViewFeedback);
 
         progress = new ProgressDialog(this);
         progress.setIndeterminate(true);
@@ -88,13 +100,9 @@ public class MainActivity extends BaseVolleyActivity {
 
         getParameters();
 
-        // Comprobamos que la aplicación tenga permisos para utilizar la ubicación y, en caso de no tenerlo, se solicita.
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},1);
+        if (feedback != null) {
+            feedback.setText(Html.fromHtml("<a href=\"mailto:"+getString(R.string.email_address)+"?subject="+getString(R.string.email_subject)+"\" >"+ getString(R.string.feedback) +"</a>"));
+            feedback.setMovementMethod(LinkMovementMethod.getInstance());
         }
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -127,11 +135,13 @@ public class MainActivity extends BaseVolleyActivity {
             public void onProviderDisabled(String provider) {}
         };
 
+        progressLocating.show();
+
         if(!noGps){
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
         }
+
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
-        progressLocating.show();
 
         // Listener para el botón de mapa
         if (mapButton != null) {
