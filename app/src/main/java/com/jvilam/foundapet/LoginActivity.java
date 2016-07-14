@@ -52,6 +52,7 @@ public class LoginActivity extends BaseVolleyActivity {
         pass = (EditText) findViewById(R.id.editTextPassword);
         Button access = (Button) findViewById(R.id.buttonLogin);
         Button newUser = (Button) findViewById(R.id.buttonNewUser);
+        Button guest = (Button) findViewById(R.id.buttonGuest);
         remember = (CheckBox) findViewById(R.id.checkBoxRemeberLogin);
 
         progress = new ProgressDialog(this);
@@ -100,6 +101,19 @@ public class LoginActivity extends BaseVolleyActivity {
                     Intent intent = new Intent(getApplicationContext(), NewUserActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                }
+            });
+        }
+
+        if (guest != null) {
+            guest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("guest", true);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                    LoginActivity.this.finish();
                 }
             });
         }
@@ -182,6 +196,7 @@ public class LoginActivity extends BaseVolleyActivity {
                                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                     intent.putExtra("idUser", idUser);
                                     intent.putExtra("userName", userName);
+                                    intent.putExtra("guest", false);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     startActivity(intent);
                                     LoginActivity.this.finish();

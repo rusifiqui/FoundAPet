@@ -50,6 +50,7 @@ public class MainActivity extends BaseVolleyActivity {
     private String userName;
     private boolean patrolModeState = false;
     private boolean noGps = false;
+    private boolean guest = false;
 
     private LocationManager locationManager;
     private LocationListener locationListener;
@@ -103,6 +104,15 @@ public class MainActivity extends BaseVolleyActivity {
         if (feedback != null) {
             feedback.setText(Html.fromHtml("<a href=\"mailto:"+getString(R.string.email_address)+"?subject="+getString(R.string.email_subject)+"\" >"+ getString(R.string.feedback) +"</a>"));
             feedback.setMovementMethod(LinkMovementMethod.getInstance());
+        }
+
+        if(guest) {
+            patrolModeCheck.setClickable(false);
+            patrolModeCheck.setEnabled(false);
+            if (settingsButton != null) {
+                settingsButton.setClickable(false);
+                settingsButton.setEnabled(false);
+            }
         }
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
@@ -169,16 +179,22 @@ public class MainActivity extends BaseVolleyActivity {
 
         // Listener para el botón de nueva mascota
         if (newPet != null) {
-            newPet.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(getApplicationContext(), NewPetActivity.class);
-                    intent.putExtra("idUser", idUser);
-                    intent.putExtra("userName", userName);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }
-            });
+
+                newPet.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(guest){
+                            Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.no_guest_allowed), Toast.LENGTH_SHORT);
+                            toast.show();
+                        }else {
+                            Intent intent = new Intent(getApplicationContext(), NewPetActivity.class);
+                            intent.putExtra("idUser", idUser);
+                            intent.putExtra("userName", userName);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+                    }
+                });
         }
 
         // Listener para el check del modo patrulla
@@ -265,8 +281,11 @@ public class MainActivity extends BaseVolleyActivity {
                             pts = getPets(pets);
                             Intent intent = new Intent(getApplicationContext(), PetsMapActivity.class);
                             intent.putExtra("mascotas", pts);
-                            intent.putExtra("idUser", idUser);
-                            intent.putExtra("userName", userName);
+                            if(!guest) {
+                                intent.putExtra("idUser", idUser);
+                                intent.putExtra("userName", userName);
+                            }
+                            intent.putExtra("guest", guest);
                             intent.putExtra("state", state);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             progress.dismiss();
@@ -390,6 +409,9 @@ public class MainActivity extends BaseVolleyActivity {
             }
             if (parameters.containsKey("userName")) {
                 userName = (String) parameters.get("userName");
+            }
+            if (parameters.containsKey("guest")) {
+                guest = (boolean) parameters.get("guest");
             }
         }
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);

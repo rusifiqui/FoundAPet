@@ -29,7 +29,7 @@ import com.jvilam.foundapet.entities.Comment;
 import com.jvilam.foundapet.entities.Comments;
 import com.jvilam.foundapet.entities.Pet;
 import com.jvilam.foundapet.helpers.BaseVolleyActivity;
-import com.purplebrain.adbuddiz.sdk.AdBuddiz;
+//import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +51,7 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
     private ImageView img;
     private Comments petComments;
     private ImageButton comments;
+    private boolean guest = false;
 
     private int idUser;
     private String userName;
@@ -63,11 +64,11 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
         setContentView(R.layout.activity_pet_description);
 
         // PUBLICIDAD
-        AdBuddiz.setPublisherKey(getResources().getString(R.string.key));
+        //AdBuddiz.setPublisherKey(getResources().getString(R.string.key));
         // TODO Modo de prueba de publicidad. Comentar para subir a Producción
         //AdBuddiz.setTestModeActive();
-        AdBuddiz.cacheAds(this);
-        AdBuddiz.showAd(this);
+        //AdBuddiz.cacheAds(this);
+        //AdBuddiz.showAd(this);
 
         TextView type = (TextView) findViewById(R.id.textViewType);
         race = (TextView) findViewById(R.id.textViewRace);
@@ -85,10 +86,21 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
 
         getParameters();
         getComments();
-
-        if(idUser != pet.getIdUser()){
+        if(guest){
             if (layout != null) {
                 layout.removeView(rescued);
+            }
+            if (rescued != null) {
+                rescued.setEnabled(false);
+                rescued.setClickable(false);
+            }
+        }
+
+        if(!guest) {
+            if (idUser != pet.getIdUser()) {
+                if (layout != null) {
+                    layout.removeView(rescued);
+                }
             }
         }
 
@@ -159,6 +171,7 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
                     intent.putExtra("userName", userName);
                     intent.putExtra("idPet", pet.getId());
                     intent.putExtra("comments", petComments);
+                    intent.putExtra("guest", guest);
                     startActivity(intent);
                 }
             });
@@ -179,6 +192,9 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
             }
             if(parameters.containsKey("comments")){
                 petComments = (Comments) parameters.get("comments");
+            }
+            if (parameters.containsKey("guest")) {
+                guest = (boolean) parameters.get("guest");
             }
         }
     }

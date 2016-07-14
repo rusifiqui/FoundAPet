@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -35,11 +36,14 @@ public class CommentsActivity extends BaseVolleyActivity {
     private ProgressDialog progress;
     private Comments petComments;
 
+    private boolean guest = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comments);
         getParameters();
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.layoutComments);
         Button comment = (Button) findViewById(R.id.buttonNewComment);
         commentText = (EditText) findViewById(R.id.editTextComment);
         ListView lComments = (ListView) findViewById(R.id.listViewComments);
@@ -51,6 +55,13 @@ public class CommentsActivity extends BaseVolleyActivity {
         if (lComments != null) {
             lComments.setFocusable(true);
             lComments.requestFocus();
+        }
+
+        if(guest){
+            if (layout != null) {
+                layout.removeView(commentText);
+                layout.removeView(comment);
+            }
         }
 
         progress = new ProgressDialog(this);
@@ -91,6 +102,9 @@ public class CommentsActivity extends BaseVolleyActivity {
             }
             if(parameters.containsKey("comments")){
                 petComments = (Comments) parameters.get("comments");
+            }
+            if(parameters.containsKey("guest")){
+                guest = (boolean) parameters.get("guest");
             }
         }
     }

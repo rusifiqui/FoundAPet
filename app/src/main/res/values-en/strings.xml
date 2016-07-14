@@ -81,4 +81,6 @@
     <string name="wrong_user">The user doesn\'t exist</string>
     <string name="yes">Continue</string>
     <string name="no_location">Location is required. Long press the map to add a marker</string>
+    <string name="guest_login">Login as guest</string>
+    <string name="no_guest_allowed">Login is required to register new animals</string>
 </resources>

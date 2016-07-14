@@ -50,6 +50,7 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
     private String userName;
     private int mapType;
     private boolean noGps = false;
+    private boolean guest = false;
 
     private LatLng lastPos;
     private Map<Marker, Pet> allMarkersMap = new HashMap<>();
@@ -153,8 +154,11 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
                     Pet p = allMarkersMap.get(marker);
                     Intent intent = new Intent(getApplicationContext(), PetDescriptionActivity.class);
                     intent.putExtra("petInfo", p);
-                    intent.putExtra("idUser", idUser);
-                    intent.putExtra("userName", userName);
+                    if(!guest) {
+                        intent.putExtra("idUser", idUser);
+                        intent.putExtra("userName", userName);
+                    }
+                    intent.putExtra("guest", guest);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
@@ -244,6 +248,9 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
             }
             if (parameters.containsKey("state")){
                 state = (String) parameters.get("state");
+            }
+            if (parameters.containsKey("guest")) {
+                guest = (boolean) parameters.get("guest");
             }
         }
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);

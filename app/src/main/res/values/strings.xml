@@ -22,6 +22,7 @@
     <string name="connect_title">Acceso</string>
     <string name="connect_message">Comprobando credenciales</string>
     <string name="wrong_user">No existe el usuario</string>
+    <string name="guest_login">Entrar como invitado</string>
 
     <!-- Pantalla de Registro -->
     <string name="registration">Registro de Usuario</string>
@@ -51,6 +52,7 @@
     <string name="feedback">Informar de un error</string>
     <string name="email_address" translatable="false">foundapetapp@gmail.com</string>
     <string name="email_subject">Informe de la aplicación</string>
+    <string name="no_guest_allowed">Debes iniciar sesión para poder dar de alta animales</string>
 
 
     <!-- Pantalla de Mapa -->

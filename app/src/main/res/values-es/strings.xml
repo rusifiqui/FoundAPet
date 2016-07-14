@@ -81,4 +81,6 @@
     <string name="user_name">Usuario</string>
     <string name="wrong_user">No existe el usuario</string>
     <string name="yes">Continuar</string>
+    <string name="guest_login">Entrar como invitado</string>
+    <string name="no_guest_allowed">Debes iniciar sesión para poder dar de alta animales</string>
 </resources>
