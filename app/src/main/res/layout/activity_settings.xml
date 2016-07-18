@@ -53,4 +53,14 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_all_pets"
+        android:id="@+id/checkBoxShowAllPets"
+        android:layout_below="@+id/checkBoxNoGps"
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/textColor"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

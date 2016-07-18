@@ -26,8 +26,9 @@ import org.json.JSONObject;
 
 public class SettingsActivity extends BaseVolleyActivity {
 
-    Spinner mapType;
-    CheckBox noGps;
+    private Spinner mapType;
+    private CheckBox noGps;
+    private CheckBox showAllPets;
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -47,6 +48,7 @@ public class SettingsActivity extends BaseVolleyActivity {
 
         mapType = (Spinner) findViewById(R.id.spinnermapType);
         noGps = (CheckBox) findViewById(R.id.checkBoxNoGps);
+        showAllPets = (CheckBox) findViewById(R.id.checkBoxShowAllPets);
         Button deleteUserButton = (Button) findViewById(R.id.buttonDeleteUser);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -78,6 +80,14 @@ public class SettingsActivity extends BaseVolleyActivity {
             }
         });
 
+        showAllPets.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                editor.putBoolean("allPets", isChecked);
+                editor.commit();
+            }
+        });
+
         if (deleteUserButton != null) {
             deleteUserButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,6 +109,9 @@ public class SettingsActivity extends BaseVolleyActivity {
             }
             if(prefs.contains("noGps")){
                 noGps.setChecked(prefs.getBoolean("noGps", false));
+            }
+            if(prefs.contains("allPets")){
+                showAllPets.setChecked(prefs.getBoolean("allPets", false));
             }
         }
     }

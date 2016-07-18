@@ -94,6 +94,7 @@
     <string name="yes">Continuar</string>
     <string name="no">Cancelar</string>
     <string name="deleteing_user">Eliminando usuario</string>
+    <string name="show_all_pets">Mostrar todos los animales</string>
 
     <!-- Pantalla de comentarios -->
     <string name="new_comment">Comentar</string>

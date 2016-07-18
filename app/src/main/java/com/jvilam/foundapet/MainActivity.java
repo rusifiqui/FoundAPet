@@ -50,6 +50,7 @@ public class MainActivity extends BaseVolleyActivity {
     private String userName;
     private boolean patrolModeState = false;
     private boolean noGps = false;
+    private boolean showAllPets = false;
     private boolean guest = false;
 
     private LocationManager locationManager;
@@ -265,8 +266,13 @@ public class MainActivity extends BaseVolleyActivity {
      * Mmétodo que recupera las mascotas por provincia e inicia la actividad de mapa
      */
     private void getPetsByState() {
-        String registerUrl = getResources().getString(R.string.url_get_pets_by_state);
-
+        String registerUrl;
+        // Se comprueba si se deben mostrar todos los animales o solamente los de la provincia del usuario
+        if(showAllPets){
+            registerUrl = getResources().getString(R.string.url_get_all_pets);
+        }else {
+            registerUrl = getResources().getString(R.string.url_get_pets_by_state);
+        }
         JSONObject params = new JSONObject();
         try {
             params.put("state", state);
@@ -418,6 +424,7 @@ public class MainActivity extends BaseVolleyActivity {
         if (prefs != null) {
             patrolModeCheck.setChecked(prefs.getBoolean("patrolMode", false));
             noGps = prefs.getBoolean("noGps", false);
+            showAllPets = prefs.getBoolean("allPets", false);
         }
     }
 }

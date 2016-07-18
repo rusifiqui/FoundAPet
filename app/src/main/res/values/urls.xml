@@ -4,6 +4,7 @@
     <!-- DESARROLLO -->
     <!--<string name="url_login" translatable="false">http://kikevila.noip.me:8080/foundapet/login.php</string>
     <string name="url_register" translatable="false">http://kikevila.noip.me:8080/foundapet/register.php</string>
+    <string name="url_get_all_pets" translatable="false">http://kikevila.noip.me:8080/foundapet/getAllPets.php</string>
     <string name="url_get_pets_by_state" translatable="false">http://kikevila.noip.me:8080/foundapet/getPetsByState.php</string>
     <string name="url_new_pet" translatable="false">http://kikevila.noip.me:8080/foundapet/newPet.php</string>
     <string name="url_get_users_positions" translatable="false">http://kikevila.noip.me:8080/foundapet/getUsersPositions.php</string>
@@ -18,6 +19,7 @@
     <!-- DESARROLLO 2-->
     <!--<string name="url_login" translatable="false">http://kikevila.noip.me:8081/foundapet/login.php</string>
     <string name="url_register" translatable="false">http://kikevila.noip.me:8081/foundapet/register.php</string>
+    <string name="url_get_all_pets" translatable="false">http://kikevila.noip.me:8081/foundapet/getAllPets.php</string>
     <string name="url_get_pets_by_state" translatable="false">http://kikevila.noip.me:8081/foundapet/getPetsByState.php</string>
     <string name="url_new_pet" translatable="false">http://kikevila.noip.me:8081/foundapet/newPet.php</string>
     <string name="url_get_users_positions" translatable="false">http://kikevila.noip.me:8081/foundapet/getUsersPositions.php</string>
@@ -32,6 +34,7 @@
     <!-- PRODUCCION -->
     <string name="url_login" translatable="false">http://quiquevila.es/foundapet/login.php</string>
     <string name="url_register" translatable="false">http://quiquevila.es/foundapet/register.php</string>
+    <string name="url_get_all_pets" translatable="false">http://quiquevila.es/foundapet/getAllPets.php</string>
     <string name="url_get_pets_by_state" translatable="false">http://quiquevila.es/foundapet/getPetsByState.php</string>
     <string name="url_new_pet" translatable="false">http://quiquevila.es/foundapet/newPet.php</string>
     <string name="url_get_users_positions" translatable="false">http://quiquevila.es/foundapet/getUsersPositions.php</string>
