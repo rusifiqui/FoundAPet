@@ -84,4 +84,5 @@
     <string name="guest_login">Entrar como invitado</string>
     <string name="no_guest_allowed">Debes iniciar sesión para poder dar de alta animales</string>
     <string name="show_all_pets">Mostrar todos los animales</string>
+    <string name="accept">Aceptar</string>
 </resources>

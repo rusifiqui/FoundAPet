@@ -27,6 +27,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+/**
+ * Actividad empleada para mostrar los comentarios de cada animal.
+ * @author Enrique Vila
+ */
 public class CommentsActivity extends BaseVolleyActivity {
 
     private String userName;
@@ -88,6 +92,9 @@ public class CommentsActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método para recuperar los parámetros empleados por la actividad.
+     */
     private void getParameters(){
         Bundle parameters = getIntent().getExtras();
         if (parameters != null) {
@@ -110,7 +117,7 @@ public class CommentsActivity extends BaseVolleyActivity {
     }
 
     /**
-     * Método que realiza el login del usuario
+     * Método que llama al servicio web para almacenar el nuevo comentario
      */
     private void sendComment(){
         String loginUrl = getResources().getString(R.string.url_comment);
@@ -146,6 +153,10 @@ public class CommentsActivity extends BaseVolleyActivity {
         addToQueue(jsonObjReq);
     }
 
+    /**
+     * Métofo encargado de añadir los comentarios
+     * @return los comentarios
+     */
     private ArrayList<CommentItem> getComments(){
         ArrayList<CommentItem> items = new ArrayList<>();
         if(petComments != null && petComments.size() > 0) {
@@ -159,6 +170,9 @@ public class CommentsActivity extends BaseVolleyActivity {
         return items;
     }
 
+    /**
+     * Método encargado de finalizar la actividad
+     */
     private void finishActivity(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("idUser", idUser);
@@ -167,6 +181,11 @@ public class CommentsActivity extends BaseVolleyActivity {
         finish();
     }
 
+    /**
+     * Método para convertir el formato de la fecha almacenada en BBDD
+     * @param date la fecha
+     * @return la fecha en formato correcto
+     */
     private String getDate(String date){
         String y = date.substring(0, date.indexOf("-"));
         String m = date.substring(date.indexOf("-")+1, date.lastIndexOf("-"));

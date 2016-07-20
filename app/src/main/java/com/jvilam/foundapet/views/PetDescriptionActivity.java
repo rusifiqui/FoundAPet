@@ -39,7 +39,8 @@ import java.io.ByteArrayOutputStream;
 
 
 /**
- * Clase que muestra la información de las mascotas
+ * Clase que muestra la información de las mascotas.
+ * @author Enrique Vila
  */
 public class PetDescriptionActivity extends BaseVolleyActivity {
 
@@ -178,6 +179,9 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método para recuperar los parámetros empleados por la actividad.
+     */
     private void getParameters(){
         Bundle parameters = getIntent().getExtras();
         if (parameters != null) {
@@ -246,6 +250,9 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que llama al servicio web para indicar que una mascota ha sido rescatada.
+     */
     private void markPetAsRescued(){
         String registerUrl = getResources().getString(R.string.url_mark_pet_as_rescued);
 
@@ -272,6 +279,9 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que recupera los comentarios de un animal.
+     */
     private void getComments() {
         petComments = new Comments();
         String registerUrl = getResources().getString(R.string.url_get_comments);
@@ -316,6 +326,9 @@ public class PetDescriptionActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que se encarga de finalizar la actividad tras dar un animal por rescatado.
+     */
     private void finishActivity(){
         Toast toast = Toast.makeText(getApplicationContext(), R.string.pet_rescued, Toast.LENGTH_SHORT);
         toast.show();

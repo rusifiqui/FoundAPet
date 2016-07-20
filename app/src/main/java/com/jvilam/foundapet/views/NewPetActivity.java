@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -149,7 +150,9 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
                     // Validación de permisos
                     if (ContextCompat.checkSelfPermission(NewPetActivity.this,
                             Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(NewPetActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            ActivityCompat.requestPermissions(NewPetActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                        }
                     }
                     Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                     photoPickerIntent.setType("image/*");
@@ -365,6 +368,9 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
         return true;
     }
 
+    /**
+     * Método que recupera parámetros de la aplicación
+     */
     private void getParameters(){
 
         Bundle parameters = getIntent().getExtras();
@@ -380,6 +386,10 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
 
     }
 
+    /**
+     * Método que almacena la localización
+     * @param l La localización
+     */
     private void savePosition(Location l){
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -388,6 +398,12 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
         editor.commit();
     }
 
+    /**
+     * Método que decodifica una URI y devuelve la imagen como un Bitmap
+     * @param selectedImage la dirección
+     * @return La imágen
+     * @throws FileNotFoundException
+     */
     private Bitmap decodeUri(Uri selectedImage) throws FileNotFoundException {
 
         // Decode image size
@@ -429,6 +445,11 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
         return myBitmap;
     }
 
+    /**
+     * Método que convierte un objeto de tipo Bitmap a una cadena de caracteres codificada en Base 64
+     * @param bmp La imagen
+     * @return La cadena
+     */
     public String convertBitmapToString(Bitmap bmp){
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.PNG, 90, stream); //compress to which format you want.
@@ -437,6 +458,9 @@ public class NewPetActivity extends BaseVolleyActivity implements OnMapReadyCall
 
     }
 
+    /**
+     * Método encargado de finalizar la actividad.
+     */
     private void finishActivity(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("idUser", idUser);

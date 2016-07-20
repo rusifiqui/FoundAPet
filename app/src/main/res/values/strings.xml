@@ -42,7 +42,6 @@
     <string name="user_creation_error">Se ha producido un error de comunicación con el servidor</string>
     <string name="no_space_in_login">El usuario no puede contener espacios</string>
     <string name="no_space_in_pass">La contraseña no puede contener espacios</string>
-    no_space_in_login
 
     <!-- Menú principal -->
     <string name="loading_pets">Recuperando mascotas</string>
@@ -53,6 +52,7 @@
     <string name="email_address" translatable="false">foundapetapp@gmail.com</string>
     <string name="email_subject">Informe de la aplicación</string>
     <string name="no_guest_allowed">Debes iniciar sesión para poder dar de alta animales</string>
+    <string name="accept">Aceptar</string>
 
 
     <!-- Pantalla de Mapa -->

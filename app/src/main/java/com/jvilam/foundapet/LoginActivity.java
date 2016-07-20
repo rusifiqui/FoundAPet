@@ -142,6 +142,9 @@ public class LoginActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que almacena las credenciales introducidas por el usuario.
+     */
     private void saveConfiguration(){
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -150,6 +153,9 @@ public class LoginActivity extends BaseVolleyActivity {
         editor.commit();
     }
 
+    /**
+     * Método que elimina las credenciales almacenados
+     */
     private void deteleConfiguration(){
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();

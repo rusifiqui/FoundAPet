@@ -1,8 +1,10 @@
 package com.jvilam.foundapet;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -32,7 +34,6 @@ import com.jvilam.foundapet.entities.Pets;
 import com.jvilam.foundapet.helpers.BaseVolleyActivity;
 import com.jvilam.foundapet.views.NewPetActivity;
 import com.jvilam.foundapet.views.PetsMapActivity;
-//import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,6 +43,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+//import com.purplebrain.adbuddiz.sdk.AdBuddiz;
+
+/**
+ * Clase que represeanta la pantalla del menú principal de la aplicación
+ * @author Enrique Vila
+ */
 public class MainActivity extends BaseVolleyActivity {
 
     private boolean doubleBackToExitPressedOnce = false;
@@ -119,6 +126,7 @@ public class MainActivity extends BaseVolleyActivity {
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
             public void onLocationChanged(Location location) {
+                checkMessage();
                 progressLocating.dismiss();
                 //TODO Activar anuncios
                 //AdBuddiz.showAd(MainActivity.this);
@@ -212,6 +220,9 @@ public class MainActivity extends BaseVolleyActivity {
         });
     }
 
+    /**
+     * Método para controlar el botón de "volver".
+     */
     @Override
     public void onBackPressed() {
         if (doubleBackToExitPressedOnce) {
@@ -344,6 +355,11 @@ public class MainActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que generar un objeto de animales
+     * @param pets JSONArray con los datos de los animales
+     * @return objeto con los animales
+     */
     private Pets getPets(JSONArray pets){
         Pets v = new Pets();
         for(int i = 0; i < pets.length(); i++){
@@ -372,41 +388,9 @@ public class MainActivity extends BaseVolleyActivity {
         return v;
     }
 
-    /** Se elimina ya que, en caso se existir un gran volumen de comentarios, no caben en un JSON
-     * Método que genera los comentarios para enviar al mapa.
+    /**
+     * Método para recuperar los parámetros empleados por la actividad.
      */
-    /*private void makeComments(JSONArray com){
-        Comments comments = new Comments();
-        int actPet = 0;
-        for(int i = 0; i < com.length(); i++){
-            int p;
-            try {
-                Comment singleCom = new Comment();
-                JSONObject c = com.getJSONObject(i);
-                singleCom.setComment(c.getString("COMMENT"));
-                singleCom.setUserName(c.getString("USER_NAME"));
-                singleCom.setDate(c.getString("COMMENT_DATE"));
-                singleCom.setId(c.getInt("ID_COMMENT"));
-                p = c.getInt("ID_PET");
-                if(actPet != p && actPet != 0){
-                    commentsMap.put(actPet, comments);
-                    actPet = p;
-                    comments = new Comments();
-                }else if (actPet != p){
-                    actPet = p;
-                }
-                comments.addComment(singleCom);
-
-                if((i == (com.length() - 1))){
-                    commentsMap.put(p, comments);
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-    }*/
-
     private void getParameters(){
         Bundle parameters = getIntent().getExtras();
         if (parameters != null) {
@@ -426,5 +410,47 @@ public class MainActivity extends BaseVolleyActivity {
             noGps = prefs.getBoolean("noGps", false);
             showAllPets = prefs.getBoolean("allPets", false);
         }
+    }
+
+    /**
+     * Método que comprueba si existe algún mensaje a mostrar y lo recupera
+     */
+    private void checkMessage(){
+        String registerUrl = getResources().getString(R.string.url_check_message);
+
+        // Se crea la petición
+        JsonArrayRequest jsonObjReq = new JsonArrayRequest(registerUrl,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            JSONObject message = response.getJSONObject(0);
+                            showDialog(message.getString("MESSAGE"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {}
+        });
+        // Se añade la petición a la cola
+        addToQueue(jsonObjReq);
+    }
+
+    /**
+     * Método que genera un diálogo y lo muestra al usuario, con un mensaje recuperado del servidor.
+     * @param m El mensaje a mostrar
+     */
+    private void showDialog(String m){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(false).setTitle(R.string.attention).setMessage(m).setNeutralButton(R.string.accept, new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int id) {}
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+
     }
 }

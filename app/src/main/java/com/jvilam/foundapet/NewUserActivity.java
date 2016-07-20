@@ -21,6 +21,10 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
+/**
+ * Actividad encargada del registro de nuevos usuarios.
+ * @author Enrique Vila
+ */
 public class NewUserActivity extends BaseVolleyActivity {
 
     EditText fName;
@@ -63,6 +67,10 @@ public class NewUserActivity extends BaseVolleyActivity {
         });
     }
 
+    /**
+     * Método encargado de validar los campos de la actividad
+     * @return true si los datos introducidos son correctos, false en caso contrario
+     */
     private boolean validateFields(){
         if(fName.length() == 0 || lName.length() == 0 || user.length() == 0 ||
                 email.length() == 0 || pass.length() == 0 || verifyPass.length() == 0){
@@ -98,6 +106,9 @@ public class NewUserActivity extends BaseVolleyActivity {
         return true;
     }
 
+    /**
+     * Método que se encarga de llamar al servicio web encargado de generar el nuevo usuario.
+     */
     private void registerUser() {
         String registerUrl = getResources().getString(R.string.url_register);
         String encriptedPassword = null;

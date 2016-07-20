@@ -40,6 +40,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * Actividad encargada de representar en un mapa los animales perdidos y encontrados.
+ * @author Enrique Vila
+ */
 public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCallback {
 
     private GoogleMap petsMap;
@@ -71,6 +75,10 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
 
     }
 
+    /**
+     * Método invocado cuando el mapa está listo para ser utilizado
+     * @param googleMap el mapa
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         petsMap = googleMap;
@@ -234,6 +242,9 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
         }
     }
 
+    /**
+     * Método encargado de recuperar parámetros de la aplicación.
+     */
     private void getParameters(){
         Bundle parameters = getIntent().getExtras();
         if (parameters != null) {
@@ -262,6 +273,10 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
         }
     }
 
+    /**
+     * Método encargado de almacenar la localización del usuario.
+     * @param l La localización
+     */
     private void savePosition(Location l){
         SharedPreferences prefs = getSharedPreferences("foundapet", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -299,7 +314,8 @@ public class PetsMapActivity extends BaseVolleyFragment implements OnMapReadyCal
     }
 
     /**
-     * Mmétodo que actualiza la posición del usuario en la base de datos si está activo el modo patrulla
+     * Método que actualiza la posición del usuario en la base de datos si está activo el modo patrulla
+     * @param l La localización
      */
     private void sendUserPosition(Location l) {
         String registerUrl = getResources().getString(R.string.url_send_user_position);

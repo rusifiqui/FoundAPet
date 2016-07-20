@@ -116,6 +116,9 @@ public class SettingsActivity extends BaseVolleyActivity {
         }
     }
 
+    /**
+     * Método que solicita confirmación antes de eliminar un usuario.
+     */
     private void deleteUserDialog(){
         AlertDialog.Builder builder =
                 new AlertDialog.Builder(this);
